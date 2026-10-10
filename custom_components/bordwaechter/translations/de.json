@@ -1,0 +1,22 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bordwächter",
+        "description": "Adresse und UI-Passwort des Bordgeräts eingeben.",
+        "data": {
+          "host": "Host / IP",
+          "port": "Port",
+          "password": "UI-Passwort",
+          "name": "Name (optional)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Gerät fehlgeschlagen."
+    },
+    "abort": {
+      "already_configured": "Dieses Gerät ist bereits eingerichtet."
+    }
+  }
+}
