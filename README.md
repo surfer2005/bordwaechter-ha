@@ -13,11 +13,23 @@ bleibt auf dem Gerät; HA ist reine Anzeige.
 
 ## Entitäten
 
-- **Sensoren:** Phase, Empfehlung, Kurszustand, Soll-Ankunft, Abfahrt, Reststrecke, Ist-/Soll-Tempo,
-  Kursabweichung (m), Restzeit, Nächster Halt.
-- **Binärsensoren:** Alarm, SIFA aktiv, Kamera-Hinweis, Position ok.
+Die Integration gibt **alles** weiter, was das Gerät über `/api/status` liefert — Fahrt, Umwelt und
+den Zustand des Raspberry selbst. So sieht man aus der Ferne (gleiches Netz / über HA) den ganzen
+Betrieb eines Schiffs.
+
+- **Fahrt / Pünktlichkeit:** Phase, Empfehlung, Kurszustand, Alarm-Zustand, Soll-Ankunft, Abfahrt,
+  Reststrecke, Ist-/Soll-/Differenz-/Höchst-Tempo, Kurs über Grund, Kursabweichung + Kursgrenze,
+  Restzeit, Wartezeit, Verspätung, Alter von Position und KAI-Daten, Hinweis, Nächster Halt.
+- **Wetter:** Lufttemperatur, Wind, Windrichtung, Niederschlag (gleiche Quelle wie KAI).
+- **Pegel:** Pegelstand, Pegeländerung (cm/h), Pegeltrend (steigend/stabil/fallend), Station.
+- **Pi-Zustand (Diagnose):** CPU-Temperatur, CPU-Auslastung, Systemlast, Speicher belegt,
+  RAM gesamt, Platte belegt, Laufzeit.
+- **Binärsensoren:** Alarm, SIFA aktiv, Kamera-Hinweis, Position ok, Hupe, Warnlampe,
+  Bordbuch vorhanden, Nächstes Bordbuch fällig, Kamera/Livestream konfiguriert.
 - **Device-Tracker:** Schiffsposition (auf der HA-Karte) — so kommen die **GPS-Koordinaten über die
   Integration** nach HA, ganz ohne eigenes MQTT-Setup.
+
+> Wetter/Pegel/Pi-Zustand brauchen Bordwächter-Gerät **≥ v0.1.47**.
 
 ## Hinweise
 

@@ -20,6 +20,15 @@ class BordwaechterEntity(CoordinatorEntity[BordwaechterCoordinator]):
     def _data(self) -> dict:
         return self.coordinator.data or {}
 
+    def _get(self, path: str):
+        """Wert über einen Punkt-Pfad lesen, z. B. 'info.weather.temp_c' oder 'system.cpu_pct'."""
+        cur = self.coordinator.data or {}
+        for part in path.split("."):
+            if not isinstance(cur, dict):
+                return None
+            cur = cur.get(part)
+        return cur
+
     @property
     def device_info(self) -> DeviceInfo:
         d = self.coordinator.data or {}

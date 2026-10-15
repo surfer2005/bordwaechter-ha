@@ -6,18 +6,27 @@ from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
 )
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DOMAIN
 from .entity import BordwaechterEntity
 
-# (key, Name, device_class, Icon)
+DIAG = EntityCategory.DIAGNOSTIC
+
+# (key, Name, device_class, Icon, entity_category)
 BINARY = [
-    ("alarm", "Alarm", BinarySensorDeviceClass.SAFETY, "mdi:alarm-light"),
-    ("sifa_deadman_active", "SIFA aktiv", BinarySensorDeviceClass.SAFETY, "mdi:account-alert"),
-    ("camera_hazard", "Kamera-Hinweis", BinarySensorDeviceClass.SAFETY, "mdi:cctv"),
-    ("pos_valid", "Position ok", BinarySensorDeviceClass.CONNECTIVITY, "mdi:crosshairs-gps"),
+    ("alarm", "Alarm", BinarySensorDeviceClass.SAFETY, "mdi:alarm-light", None),
+    ("sifa_deadman_active", "SIFA aktiv", BinarySensorDeviceClass.SAFETY, "mdi:account-alert", None),
+    ("camera_hazard", "Kamera-Hinweis", BinarySensorDeviceClass.SAFETY, "mdi:cctv", None),
+    ("pos_valid", "Position ok", BinarySensorDeviceClass.CONNECTIVITY, "mdi:crosshairs-gps", None),
+    ("horn", "Hupe", BinarySensorDeviceClass.SOUND, "mdi:bullhorn", None),
+    ("lamp", "Warnlampe", BinarySensorDeviceClass.LIGHT, "mdi:alarm-light-outline", None),
+    ("hat_bordbuch", "Bordbuch vorhanden", None, "mdi:book-open-variant", DIAG),
+    ("next_logbook_hint", "Nächstes Bordbuch fällig", None, "mdi:book-plus", None),
+    ("cam_configured", "Kamera konfiguriert", None, "mdi:cctv", DIAG),
+    ("stream_configured", "Livestream konfiguriert", None, "mdi:video", DIAG),
 ]
 
 
@@ -27,12 +36,13 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 
 
 class BwBinary(BordwaechterEntity, BinarySensorEntity):
-    def __init__(self, coordinator, entry, key, name, device_class, icon):
+    def __init__(self, coordinator, entry, key, name, device_class, icon, category=None):
         super().__init__(coordinator, entry)
         self._key = key
         self._attr_name = name
         self._attr_device_class = device_class
         self._attr_icon = icon
+        self._attr_entity_category = category
         self._attr_unique_id = f"{entry.entry_id}_{key}"
 
     @property
