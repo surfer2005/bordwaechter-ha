@@ -27,6 +27,7 @@ BINARY = [
     ("next_logbook_hint", "Nächstes Bordbuch fällig", None, "mdi:book-plus", None),
     ("cam_configured", "Kamera konfiguriert", None, "mdi:cctv", DIAG),
     ("stream_configured", "Livestream konfiguriert", None, "mdi:video", DIAG),
+    ("update_available", "Update verfügbar", BinarySensorDeviceClass.UPDATE, "mdi:cloud-download", DIAG),
 ]
 
 

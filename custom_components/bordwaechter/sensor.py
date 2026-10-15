@@ -42,6 +42,8 @@ SENSORS = [
     ("pos_age_sec", "Position Alter", "s", "mdi:crosshairs-question", None, None, DIAG),
     ("bundle_age_sec", "KAI-Daten Alter", "s", "mdi:cloud-clock-outline", None, None, DIAG),
     ("hint", "Hinweis", None, "mdi:information-outline", None, None, DIAG),
+    ("sifa_countdown_sec", "Totmann-Countdown", "s", "mdi:timer-alert-outline", SensorDeviceClass.DURATION, None, None),
+    ("registration_number", "Kennzeichen", None, "mdi:ferry", None, None, DIAG),
     # --- Wetter (info.weather) ---
     ("info.weather.temp_c", "Lufttemperatur", "°C", "mdi:thermometer", SensorDeviceClass.TEMPERATURE, M, None),
     ("info.weather.wind_kmh", "Wind", "km/h", "mdi:weather-windy", None, M, None),
