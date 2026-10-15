@@ -28,6 +28,7 @@ SENSORS = [
     ("soll", "Soll-Ankunft", None, "mdi:clock-outline", None, None, None),
     ("abfahrt", "Abfahrt", None, "mdi:clock-start", None, None, None),
     ("remain_km", "Reststrecke", "km", "mdi:map-marker-distance", None, M, None),
+    ("today_km", "Tageskilometer", "km", "mdi:map-marker-distance", None, SensorStateClass.TOTAL_INCREASING, None),
     ("ist_kmh", "Ist-Tempo", "km/h", "mdi:speedometer", None, M, None),
     ("soll_kmh", "Soll-Tempo", "km/h", "mdi:speedometer-medium", None, M, None),
     ("diff_kmh", "Tempo-Differenz", "km/h", "mdi:speedometer-slow", None, M, None),
@@ -64,7 +65,7 @@ SENSORS = [
 _PRECISION1 = {
     "info.weather.temp_c", "info.weather.wind_kmh", "info.pegel.cm", "info.pegel.rate_cm_per_h",
     "system.cpu_temp_c", "system.cpu_pct", "system.load1", "system.mem_pct", "system.disk_pct",
-    "ist_kmh", "soll_kmh", "diff_kmh", "max_kmh", "remain_km", "off_course_m", "heading",
+    "ist_kmh", "soll_kmh", "diff_kmh", "max_kmh", "remain_km", "off_course_m", "heading", "today_km",
 }
 _TREND = {-1: "fallend", 0: "stabil", 1: "steigend"}
 
